@@ -1,74 +1,63 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class SklepKomputerowy {
-    private Produkt[] produkty=new Produkt[10];
-    private Klient[] klienci=new Klient[10];
-    private Zamowienie[] zamowienia=new Zamowienie[10];
+    private List<Produkt> produkty = new ArrayList<>();
+    private List<Klient> klienci = new ArrayList<>();
+    private List<Zamowienie> zamowienia = new ArrayList<>();
     private int liczbaProduktow = 0;
     private int liczbaKlientow = 0;
     private int liczbaZamowien = 0;
 
+    public SklepKomputerowy() {
+        this.zamowienia=zamowienia;
+        this.liczbaProduktow=liczbaProduktow;
+        this.liczbaKlientow=liczbaKlientow;
+        this.liczbaZamowien=liczbaZamowien;
+    }
+
     public void dodajProdukt(Produkt produkt) {
-        if (liczbaProduktow < produkty.length) {
-            produkty[liczbaProduktow] = produkt;
-            liczbaProduktow++;
-        } else {
-            System.out.println("Za dużo produktów");
-        }
+        produkty.add(produkt);
     }
 
     public void dodajKlienta(Klient klient) {
-        if (liczbaKlientow < klienci.length) {
-            klienci[liczbaKlientow] = klient;
-            liczbaKlientow++;
-        } else {
-            System.out.println("Za duzo klientow");
-        }
+        klienci.add(klient);
     }
 
     public Zamowienie utworzZamowienie(Klient klient, Produkt[] produkty, int[] ilosci) {
-        if (liczbaZamowien < produkty.length) {
-            String dataZamowienia="12-04-2025";
-            Zamowienie zamowienie = new Zamowienie(liczbaZamowien + 1, klient, produkty, ilosci, dataZamowienia,"Nowe");
-            zamowienia[liczbaZamowien] = zamowienie;
-            liczbaZamowien++;
-            aktualizujStanMagazynowy(zamowienie);
-        }
-        return null;
+
+        Zamowienie zamowienie = new Zamowienie(liczbaZamowien+1,klient,produkty, ilosci, "2025-04-03","Nowe");
+        zamowienia.add(zamowienie);
+        liczbaZamowien++;
+        return zamowienie;
     }
 
     public void aktualizujStanMagazynowy(Zamowienie zamowienie) {
-        for (int i = 0; i < zamowienie.getProdukty().length; i++) {
-            Produkt produkt = zamowienie.getProdukty()[i];
-            int ilosc = zamowienie.getIlosci()[i];
-            produkt.setIloscWMagazynie(produkt.getIloscWMagazynie() - ilosc);
+        for(int i=0; i<zamowienie.produkty.length; i++) {
+            zamowienie.produkty[i].setIloscWMagazynie(zamowienie.produkty[i].getIloscWMagazynie()-zamowienie.ilosci[i]);
         }
     }
 
     public void zmienStatusZamowienia(int idZamowienia, String nowyStatus) {
-        for (int i = 0; i < liczbaZamowien; i++) {
-            if (zamowienia[i].getId() == idZamowienia) {
-                zamowienia[i].setStatus(nowyStatus);
-                break;
+        for(Zamowienie z : zamowienia) {
+            if(z.getId() == idZamowienia) {
+                z.setStatus(nowyStatus);
             }
         }
-    }
+                }
+
     public void wyswietlProduktyWKategorii(String kategoria)
     {
-        for(int i = 0; i < liczbaProduktow; i++)
-        {
-            if(produkty[i].getKategoria().equals(kategoria))
-            {
-                produkty[i].wyswietlInformacje();
-            }
+        for(Produkt p : produkty) {
+            if(p.getKategoria().equals(kategoria));
         }
     }
     public void wyswietlZamowienieKlienta(int idKlienta)
     {
-        for(int i = 0; i < liczbaKlientow; i++)
-        {
-            if(zamowienia[i].getKlient().getId() == idKlienta)
-            {
-                zamowienia[i].wyswietlSzczegoly();
-            }
+        for(Zamowienie z : zamowienia) {
+            if(z.klient.getId() == idKlienta)
+                z.wyswietlSzczegoly();
+
         }
     }
 }

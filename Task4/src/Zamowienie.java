@@ -1,23 +1,20 @@
 public class Zamowienie {
-    private int id;
-    private Klient klient;
-    private Produkt[] produkty;
-    private int[] ilosci;
-    private String dataZamowienia;
-    private String status;
-    public Zamowienie(int i, Klient klient, Produkt[] produkty, int[] ilosci, String dataZamowienia, String nowe){};
-    public Zamowienie(int id, Klient klient, Produkt[] produkty,int[] ilosci, String dataZamowienia) {
+     int id;
+     Klient klient;
+     Produkt[] produkty;
+     int[] ilosci;
+     String dataZamowienia;
+     String status;
+
+    public Zamowienie(int id, Klient klient, Produkt[] produkty,int[] ilosci, String dataZamowienia, String status) {
         this.id = id;
         this.klient = klient;
         this.produkty = produkty;
         this.ilosci = ilosci;
-        this.status = "Nowe";
+        this.status = status;
         this.dataZamowienia = dataZamowienia;
     }
     public int getId() {return id;    }
-    public void setId(int id) {
-        this.id = id;
-    }
     public Klient getKlient() {
         return klient;
     }

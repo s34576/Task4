@@ -5,13 +5,13 @@ public class Produkt {
     private double cena;
     private int iloscWMagazynie;
     public Produkt() {}
-    public Produkt(int id, String nazwa, String kategoria, double cena, int iloscWMagazynie) {
+    /*public Produkt(int id, String nazwa, String kategoria, double cena, int iloscWMagazynie) {
         this.id = id;
         this.nazwa = nazwa;
         this.kategoria = kategoria;
         this.cena = cena;
         this.iloscWMagazynie = iloscWMagazynie;
-    }
+    }*/
     public int getId() {return id;    }
     public void setId(int id) {this.id = id; }
     public String getNazwa() {return nazwa;}

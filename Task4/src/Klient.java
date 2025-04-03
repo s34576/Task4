@@ -5,13 +5,13 @@ public class Klient {
     private String email;
     private boolean czyStaly;
     public Klient() {}
-     public Klient(int id, String imie, String nazwisko, String email, boolean czyStaly) {
+    /* public Klient(int id, String imie, String nazwisko, String email, boolean czyStaly) {
         this.id = id;
         this.imie = imie;
         this.nazwisko = nazwisko;
         this.email = email;
         this.czyStaly= czyStaly;
-    }
+    }*/
     public int getId() {
         return id;
     }
